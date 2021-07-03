@@ -13,8 +13,8 @@ class Main{
      $this->callMethod();
     }
     public function getUrl(){
-       $this->url = isset($_GET['url']) ? $_GET['url'] : NULL; /* Lay tham so url http://localhost/E-commerce%20Shop%20PHP/index.php?url=ProductsController/details_product/13 */
-        if ($this->url !=NULL) {
+        $this->url = isset($_GET['url']) ? $_GET['url'] : NULL; /* Lay tham so url http://localhost/E-commerce%20Shop%20PHP/index.php?url=ProductsController/details_product/13 */
+        if ($this->url != NULL) {
         $this->url = rtrim($this->url, '/'); /* loai bo dau / cuoi cung cua chuoi neu tham so thu 2 k co seloai bo cac gia tri /0,/n.... co trong chuoi */
         $this->url = explode('/', filter_var($this->url,FILTER_SANITIZE_URL)); /* phan tach chuoi thanh mang thong qua dau / */
         } else {
@@ -28,7 +28,6 @@ class Main{
         if (!isset($this->url[0]))
         {
             include $this->ControllerPath.$this->ControllerName.'.php';
-            
             // include './Assets/Controller/index.php';
             $this->controller =  new $this->ControllerName();
             // $index = new index();
@@ -69,58 +68,78 @@ class Main{
 
     }
     public function callMethod(){
-        if(isset($this->url[2]))
+        if(isset($this->url[3]))
         {
             $this->MethodName = $this->url[1];
             if(method_exists($this->controller,$this->MethodName))
             {
-                $this->controller->{$this->MethodName}($this->url[2]);
+                $this->controller->{$this->MethodName}($this->url[2],$this->url[3]);
             }
             else
             {
                 header("location:".BASE_URL.'index.php');
             }
-           
-        }
-        else
+        }else
         {
-            if(isset($this->url[1]))
+            if(!isset($this->url[3]))
             {
-                $this->MethodName = $this->url[1];
-                if(method_exists($this->controller,$this->MethodName))
+                if(isset($this->url[2]))
                 {
-                    $this->controller->{$this->MethodName}();
+                    $this->MethodName = $this->url[1];
+                    if(method_exists($this->controller,$this->MethodName))
+                    {
+                        $this->controller->{$this->MethodName}($this->url[2]);
+                    }
+                    else
+                    {
+                        header("location:".BASE_URL.'index.php');
+                    }
+                   
                 }
                 else
                 {
-                    header("location:".BASE_URL.'index.php');
+                    if(isset($this->url[1]))
+                    {
+                        $this->MethodName = $this->url[1];
+                        if(method_exists($this->controller,$this->MethodName))
+                        {
+                            $this->controller->{$this->MethodName}();
+                        }
+                        else
+                        {
+                            header("location:".BASE_URL.'index.php');
+                        }
+                       
+                    }
+                    else
+                    {
+                        if(method_exists($this->controller,$this->MethodName))
+                        {
+                            $this->controller->{$this->MethodName}();
+                        }
+                        else
+                        {
+                            header('location:'.BASE_URL.'index.php');
+                        }
+                    }
                 }
-               
-            }
-            else
-            {
-                if(method_exists($this->controller,$this->MethodName))
-                {
-                    $this->controller->{$this->MethodName}();
-                }
-                else
-                {
-                    header('location:'.BASE_URL.'index.php');
-                }
+                /*  
+                 sau khi đã có controller = new ControllerName() (đối tượng mới của class có tên ControllerName)
+                 ta kiểm tra xem phần tử thứ 3(id) url[2] của url có tồn tại hay k nếu tồn tại chắc chắn sẽ tồn tại phần tử thứ 2 url[1]
+                 ta gán phần tử thứ 2 cho thuộc tính MethodName  sau dó kiểm tra method  có tồn tại hay k nếu có 
+                 ta dung thuộc tính controller(bởi vì h  thuộc tính controller là 1 đối tượng của class chứa method này) 
+                 gọi đến method đó và truyền vào method đó tham số là phần tử thứ 2
+                 ngoai ra neu phan tu thu 3 url[2] k tồn tại ta lại kiemr tra  tiep phan tu thu 2 url[1] có tồn tạo hay k 
+                 nếu có thi ta lại kiểm tra method dó có tồn tại hay k nếu  có  ta dung thuộc tính controller(bởi vì h  thuộc tính controller là 1 đối tượng của class chứa method này) 
+                 gọi đến method đó và k truyền gì vào method.
+        
+                
+                */
+                
+                
             }
         }
-        /*  
-         sau khi đã có controller = new ControllerName() (đối tượng mới của class có tên ControllerName)
-         ta kiểm tra xem phần tử thứ 3(id) url[2] của url có tồn tại hay k nếu tồn tại chắc chắn sẽ tồn tại phần tử thứ 2 url[1]
-         ta gán phần tử thứ 2 cho thuộc tính MethodName  sau dó kiểm tra method  có tồn tại hay k nếu có 
-         ta dung thuộc tính controller(bởi vì h  thuộc tính controller là 1 đối tượng của class chứa method này) 
-         gọi đến method đó và truyền vào method đó tham số là phần tử thứ 2
-         ngoai ra neu phan tu thu 3 url[2] k tồn tại ta lại kiemr tra  tiep phan tu thu 2 url[1] có tồn tạo hay k 
-         nếu có thi ta lại kiểm tra method dó có tồn tại hay k nếu  có  ta dung thuộc tính controller(bởi vì h  thuộc tính controller là 1 đối tượng của class chứa method này) 
-         gọi đến method đó và k truyền gì vào method.
-
-        
-        */
+        // 
 
     }
     //  $url = isset($_GET['url']) ? $_GET['url'] : NULL; /* Lay tham so url http://localhost/E-commerce%20Shop%20PHP/index.php?url=ProductsController/details_product/13 */
