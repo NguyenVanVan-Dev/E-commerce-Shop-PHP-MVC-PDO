@@ -1,0 +1,12 @@
+header
+	1.nav 
+	2.logo
+	3.menu
+slider
+content
+	1.wellcome 
+	2. hàng bán chạy
+	3.khung bán hàng
+new
+footer
+https://giftsonlineshop.weba.vn/index/?review=true

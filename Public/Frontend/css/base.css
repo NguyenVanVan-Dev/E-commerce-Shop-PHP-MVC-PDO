@@ -1,0 +1,31 @@
+:root{
+    --white-color:#fff;
+    --font-color:#2d3436;
+    --text-color:#333;
+    --primary-color:#ee4d2d;
+    --border-color:#d4d4d4;
+   
+}
+
+
+.grid-3{
+    width: calc(100%/3);
+    padding: 0 10px;
+}
+.grid-full{
+    max-width: 100%;
+    width: 1350px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.ml-1{
+    margin-left: 10px;
+}
+.mr-1{
+    margin-right: 10px;
+}
+.mb-1{
+    margin-bottom: 10px;
+}
+

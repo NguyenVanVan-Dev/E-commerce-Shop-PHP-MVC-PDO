@@ -1,0 +1,10 @@
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+ErrorDocument 404 http://localhost/E-commerce%20Shop%20PHP/404.html
+
