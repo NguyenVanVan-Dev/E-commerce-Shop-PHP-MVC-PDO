@@ -1,80 +1,44 @@
-<!-- <?php 
-  print_r($product);
+<?php 
 
-?> -->
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card">
-            <a href="" class="card-link">
-                <div class="card-content" style="background-image: url(<?php echo BASE_URL ?>Public/Frontend/image/hq3.jpg) ;"> 
-                    <div class="card-body">
-                        <h3 class="card-name">
-                            Hộp Quà Tết 2021 (Mẫu 1)
-                        </h3>
-                        <p class="card-price">
-                            65,000$ <span> 68,000$</span>
-                        </p>
-                        <a href="" class="btn btn__card">
-                            Thêm vào giỏ
-                        </a>
+
+if(isset($products)){
+    foreach($products as $key =>$value)
+    {
+        echo   '<div class="col-sm-4">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="'.BASE_URL.''.$value['product_image'].'" alt="" />
+                                    <h2>'.$value['product_price'].'</h2>
+                                    <p>'.$value['product_name'].'</p>
+                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                </div>
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <h2>'.$value['product_price'].'</h2>
+                                        <p>'.$value['product_name'].'</p>
+                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="choose">
+                            <ul class="nav nav-pills nav-justified">
+                                <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card">
-            <a href="" class="card-link">
-                <div class="card-content" style="background-image: url(<?php echo BASE_URL ?>Public/Frontend/image/hq3.jpg) ;"> 
-                    <div class="card-body">
-                        <h3 class="card-name">
-                            Hộp Quà Tết 2021 (Mẫu 1)
-                        </h3>
-                        <p class="card-price">
-                            65,000$ <span> 68,000$</span>
-                        </p>
-                        <a href="" class="btn btn__card">
-                            Thêm vào giỏ
-                        </a>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card">
-            <a href="" class="card-link">
-                <div class="card-content" style="background-image: url(<?php echo BASE_URL ?>Public/Frontend/image/hq3.jpg) ;"> 
-                    <div class="card-body">
-                        <h3 class="card-name">
-                            Hộp Quà Tết 2021 (Mẫu 1)
-                        </h3>
-                        <p class="card-price">
-                            65,000$ <span> 68,000$</span>
-                        </p>
-                        <a href="" class="btn btn__card">
-                            Thêm vào giỏ
-                        </a>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card">
-            <a href="" class="card-link">
-                <div class="card-content" style="background-image: url(<?php echo BASE_URL ?>Public/Frontend/image/hq3.jpg) ;"> 
-                    <div class="card-body">
-                        <h3 class="card-name">
-                            Hộp Quà Tết 2021 (Mẫu 1)
-                        </h3>
-                        <p class="card-price">
-                            65,000$ <span> 68,000$</span>
-                        </p>
-                        <a href="" class="btn btn__card">
-                            Thêm vào giỏ
-                        </a>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
+                </div> ';
+
+
+
+    }
+
+
+}
+
+
+?>
+
+
+

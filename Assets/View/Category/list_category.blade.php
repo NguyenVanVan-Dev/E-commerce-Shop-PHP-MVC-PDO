@@ -48,50 +48,58 @@
 
                         
                         <?php 
-                              
-                        foreach($category as $key => $value){
+                            if(isset($category)){
+                                foreach($category as $key => $value){
                             
                         
-                            echo '<tr>';
-                            echo '<td>'.$value['category_name'].'</td>';
-                            echo '<td>'.$value['category_slug'].'</td>';
-                            echo '<td>'.$value['category_desc'].'</td>';
-
-                            if($value['category_status'] ==1){
-                                echo "<td>";
-                                    echo '<a href="'.BASE_URL.'CategorysController/DisplayCategory/'.$value['category_id'].'" class="btn btn-success" > '.'<i class='.'"fas fa-hand-point-up"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
-                                echo "</td>";
-                            }
-                            else
-                            {
-                                echo "<td>";
-                                    echo '<a href="'.BASE_URL.'CategorysController/DisplayCategory/'.$value['category_id'].'" class="btn btn-danger " > '.'<i class='.'"fas fa-hand-point-down"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
-                                echo "</td>";
-                            }
-                            
-                            if($admin_private =='admin' ){
-    
-                            echo '<td>'; 
-                                echo '<a href="'.BASE_URL.'CategorysController/EditCategory/'.$value['category_id'].'" class="btn btn-success" > '.'<i class='.'"fas fa-edit"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
-                                echo '<a href="'.BASE_URL.'CategorysController/DeleteCategory/'.$value['category_id'].'" class="btn btn-danger ml-2" ui-toggle-class="" onclick="return confirm('.'\'Bạn có chắc là muốn xóa danh mục này ko?\''.')"  > '.'<i class='.'"fas fa-trash"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
-                            echo '</td>';
-                            }
-                            else
-                            {
-                            echo '<td>'; 
-                                echo '<a href="'.BASE_URL.'CategorysController/EditCategory/'.$value['category_id'].'" class="btn btn-success disabled " > '.'<i class='.'"fas fa-edit"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
-                                echo '<a href="'.BASE_URL.'CategorysController/DeleteCategory/'.$value['category_id'].'" class="btn btn-danger ml-2 disabled" ui-toggle-class="" onclick="return confirm('.'\'Bạn có chắc là muốn xóa danh mục này ko?\''.')"  > '.'<i class='.'"fas fa-trash"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
-                            echo '</td>';
-                            }
-                           
-                               
+                                    echo '<tr>';
+                                    echo '<td>'.$value['category_name'].'</td>';
+                                    echo '<td>'.$value['category_slug'].'</td>';
+                                    echo '<td>'.$value['category_desc'].'</td>';
         
-                                
-                            
-                            echo '</tr>';
-                            
-                        }
-                            ?>
+                                    if($value['category_status'] ==1){
+                                        echo "<td>";
+                                            echo '<a href="'.BASE_URL.'CategorysController/DisplayCategory/'.$value['category_id'].'" class="btn btn-success" > '.'<i class='.'"fas fa-hand-point-up"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
+                                        echo "</td>";
+                                    }
+                                    else
+                                    {
+                                        echo "<td>";
+                                            echo '<a href="'.BASE_URL.'CategorysController/DisplayCategory/'.$value['category_id'].'" class="btn btn-danger " > '.'<i class='.'"fas fa-hand-point-down"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
+                                        echo "</td>";
+                                    }
+                                    
+                                    if($admin_private =='admin' ){
+            
+                                    echo '<td>'; 
+                                        echo '<a href="'.BASE_URL.'CategorysController/EditCategory/'.$value['category_id'].'" class="btn btn-success" > '.'<i class='.'"fas fa-edit"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
+                                        echo '<a href="'.BASE_URL.'CategorysController/DeleteCategory/'.$value['category_id'].'" class="btn btn-danger ml-2" ui-toggle-class="" onclick="return confirm('.'\'Bạn có chắc là muốn xóa danh mục này ko?\''.')"  > '.'<i class='.'"fas fa-trash"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
+                                    echo '</td>';
+                                    }
+                                    else
+                                    {
+                                    echo '<td>'; 
+                                        echo '<a href="'.BASE_URL.'CategorysController/EditCategory/'.$value['category_id'].'" class="btn btn-success disabled " > '.'<i class='.'"fas fa-edit"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
+                                        echo '<a href="'.BASE_URL.'CategorysController/DeleteCategory/'.$value['category_id'].'" class="btn btn-danger ml-2 disabled" ui-toggle-class="" onclick="return confirm('.'\'Bạn có chắc là muốn xóa danh mục này ko?\''.')"  > '.'<i class='.'"fas fa-trash"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
+                                    echo '</td>';
+                                    }
+                                   
+                                       
+                
+                                        
+                                    
+                                    echo '</tr>';
+                                    
+                                } 
+                            }
+                            else
+                            {
+                                echo '<tr >';
+                                    echo '<td colspan="7"> Không Có Danh Mục </td>';
+                                echo '</tr>';
+                            }
+                        
+                        ?>
                        
 
 

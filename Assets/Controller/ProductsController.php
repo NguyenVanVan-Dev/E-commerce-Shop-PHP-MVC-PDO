@@ -97,10 +97,10 @@
           if ($result == 1) 
           {
             move_uploaded_file($tmp_image,$path_uploads);
-            Session::set('success', "Them Du Lieu Thanh Cong");
+            Session::set('success', "Thêm Sản Phẩm Thành Công");
           }else
           {
-              Session::set('danger', "Them Du Lieu That bai");
+              Session::set('danger', "Thêm Sản Phẩm Thất Bại");
           }
           $data['category'] = $CategoryModel->categorys(self::TABLE_CATEGORY);
           $data['yield'] = 'Products/add_product';
@@ -169,10 +169,10 @@
           if ($result == 1) 
           {
             move_uploaded_file($tmp_image,$path_uploads);
-            Session::set('success', "Update Du Lieu Thanh Cong");
+            Session::set('success', "Update Dữ Liệu Thành Công");
           }else
           {
-              Session::set('danger', "Update Du Lieu That bai");
+              Session::set('danger', "Update Dữ Liệu Thất Bại ");
           }
           $data['edit_product'] = $ProductModel->ProductByid(self::TABLE_PRODUCT,$id);
           $data['category'] = $CategoryModel->categorys(self::TABLE_CATEGORY);

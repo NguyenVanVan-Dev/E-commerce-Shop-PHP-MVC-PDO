@@ -1,473 +1,596 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Shop PHP| TF</title>
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>Public/Frontend/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>Public/Frontend/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>Public/Frontend/css/style.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>Public/Frontend/css/base.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>Public/Frontend/css/responsive.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>Public/Frontend/css/style-grid.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>Public/Frontend/font/fontawesome-free-5.15.1-web/fontawesome-free-5.15.1/css/all.min.css">
-</head>
-<body>
-    <div class="warraper">
-        <!-- Header -->
-        <div id="header">
-            <div class="header__nav-top">
-                <div class="grid wide">
-                    <nav class="header__nav">
-                        <ul class="header__list ">
-                            <li class="header__list-item">
-                                <a href="" class="header__item-link">Trang Chủ</a>
-                            </li>
-                            <li class="header__list-item">
-                                <a href="" class="header__item-link">Giới Thiệu</a>
-                            </li>
-                            <li class="header__list-item hidden-on-tablet">
-                                <a href="" class="header__item-link">Tin Tức</a>
-                            </li>
-                            <li class="header__list-item hidden-on-tablet">
-                                <a href="" class="header__item-link">Liên Hệ</a>
-                            </li>
-                            <li class="header__list-item hidden-on-tablet">
-                                <a href="<?php echo BASE_URL?>AdminController/ViewLoginAdmin" class="header__item-link">Admin</a>
-                            </li>
-                        </ul>
-                        <ul class="header__list hidden-on-mobile">
-                            <li class="header__list-item hidden-on-tablet">
-                                <a href="" class="header__item-link">Giỏ Hàng</a>
-                            </li>
-                            <li class="header__list-item hidden-on-tablet">
-                                <a href="" class="header__item-link">Thanh Toán</a>
-                            </li>
-                            <li class="header__list-item">
-                                <a href="" class="header__item-link">Đăng Kí</a>
-                            </li>
-                            <li class="header__list-item">
-                                <a href="" class="header__item-link">Đăng Nhập</a>
-                            </li>
-                        </ul>
-                    </nav>
-                   
-                </div>
-            </div>
-            <div class="grid wide">
-                <div class=" row header__license">
-                    <div class="col-lg-4 col-md-6 col-sm-3">
-                        <div class="header__logo">
-                            <a href="" class="header__link-logo">
-                                <img src="<?php echo BASE_URL ?>Public/Frontend/image/logo.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-0 col-sm-0">
-                        <div class="header__contact-phone">
-                            <a href="" class="contact-link">
-                                <i class="fas fa-phone-alt"></i>
-                                <span class="contact-phone">Hotline: 0366361624</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-9">
-                        <div class="header__form-group">
-                            <form action="" class="header__form">
-                                <div class="header__input">
-                                    <div class="header__input-text">
-                                        <i class="fas fa-search"></i>
-                                        <input type="text" placeholder="Từ Khóa..." >
-                                    </div>
-                                    <input type="submit" value="Tìm Kiếm">
-                                </div>
-    
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="header__menu ">
-                    <ul class="header__list-bottom ">
-                            <?php 
-                                
-                                $load = new Load;
-                             
-                                 if(isset($category) )
-                                {
-                                    $data['result'] = $category;
-                                }
-                                else
-                                {
-                                    $data['result'] = ''; 
-                                }
-                               
-                                $load->view($yield_category,$data); 
-                               
-                            ?>
-                       
-                       
-                        <li class="header__item-bottom dropdown-list hidden-on-pc">
-                            <a href="" class="header__item-link hidden-on-mobile hidden-on-pc">  <i class="fas fa-bars"></i> Khác</a>
-                            <a href="" class="header__item-link hidden-on-pc hidden-on-tablet">  <i class="fas fa-bars"></i> All Menu </a>
-                            <ul class=" dropdown-mobi-tablet">
-                                <li class="header__dropdown-item">
-                                    <a href="" class="header__drowdown-link hidden-on-tablet">Sản Phẩm Bán Chạy</a>
-                                </li>
-                                <li class="header__dropdown-item">
-                                    <a href="" class="header__drowdown-link hidden-on-tablet">Hộp Quà Tết</a>
-                                </li>
-                                <li class="header__dropdown-item">
-                                    <a href="" class="header__drowdown-link">Giỏ Tết</a>
-                                </li>
-                                <li class="header__dropdown-item">
-                                    <a href="" class="header__drowdown-link">Giỏ Trái Cây</a>
-                                </li>
-                                
-                        
-                            </ul>
-                        </li>
-                        
-                    </ul>
-                    
-                </div>
-            </div>
-        </div>
-        <!-- End Header -->
-        <!-- Slider -->
-        <div id="slide">
-            <div class="grid">
-                <div class="slider ">
-                    <div class="owl-carousel owl-theme">
-                        <div class="item">
-                            <img src="<?php echo BASE_URL ?>Public/Frontend/image/bannerso1.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo BASE_URL ?>Public/Frontend/image/banner2.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img src="<?php echo BASE_URL ?>Public/Frontend/image/banner3.jpg" alt="">
-                        </div>
-                       
-                    </div>
-                </div>
-            </div>
-            <div class="grid wide ">
-                <div class="slide__wellcome hidden-on-mobile">
-                    <div class="slide__info">
-                        <h2 class="slide__heading">Wellcome  !!!</h2>
-                        <p class="slide__text">
-                            Công Ty TNHH Thương Mại Dịch Vụ Đầu Tư Vạn Phú
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Slider -->
-        <!-- Content -->
-        <div id="content">
-            <div class="grid wide">
-                <div class="row content__banner">
-                    <div class=" col-lg-3 col-md-3 col-sm-12 content__baner-img">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <a href="" class="banner__link">
-                                    <img src="<?php echo BASE_URL ?>Public/Frontend/image/Untitled-1.png" alt="" class="banner__img">
-                                    <p class="banner__text"> Hộp Quà Tết</p>
-                                </a>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <a href="" class="banner__link">
-                                    <img src="<?php echo BASE_URL ?>Public/Frontend/image/Untitled-2.png" alt="" class="banner__img">
-                                    
-                                        <p class="banner__text"> Giỏ Tết</p>
-                                   
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" col-lg-3 col-md-3 col-sm-12 content__baner-img">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <a href="" class="banner__link">
-                                    <img src="<?php echo BASE_URL ?>Public/Frontend/image/Untitled-3.png" alt="" class="banner__img">
-                                    <p class="banner__text"> Giỏ Trái Cây</p>
-                                </a>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <a href="" class="banner__link">
-                                    <img src="<?php echo BASE_URL ?>Public/Frontend/image/Untitled-4.png" alt="" class="banner__img">
-                                    <p class="banner__text"> Sản Phẩm Khác</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" col-lg-6 col-md-6 col-sm-12 content__baner-img-lg">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                            <a href="" class="banner__link"> <img src="<?php echo BASE_URL ?>Public/Frontend/image/banner.png" alt="" class="banner__img">
-                                <p class="banner__text"> Sản Phẩm Bán Chạy</p>
-                            </div></a>   
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid wide">
-                <div class="content__category">
-                    <p class="content__label">
-                        Hộp Quà Tết
-                    </p>
-                </div>
-            </div>
-            <div class="grid wide">
-                <div class="row">
-                            <?php 
-                               
-                                 if(isset($products) )
-                                {
-                                    $data['product'] = $products;
-                                }
-                                else
-                                {
-                                    $data['product'] = ''; 
-                                }
-                               
-                                $load->view($yield_product,$data); 
-                            
-                            ?>
-                   
-                </div>
-            </div>
-            <div class="grid wide">
-                <div class="content__category">
-                    <p class="content__label">
-                       Giỏ Trái Cây
-                    </p>
-                </div>
-            </div>
-            <div class="grid wide">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card">
-                            <a href="" class="card-link">
-                                <div class="card-content" style="background-image: url(<?php echo BASE_URL ?>Public/Frontend/image/tc1.png) ;"> 
-                                    <div class="card-body">
-                                        <h3 class="card-name">
-                                            Giỏ trái cây 1 (Mẫu 1)
-                                        </h3>
-                                        <p class="card-price">
-                                            65,000$ <span> 68,000$</span>
-                                        </p>
-                                        <a href="" class="btn btn__card">
-                                            Thêm vào giỏ
-                                        </a>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                   
-                </div>
-            </div>
-            <div class="grid wide">
-                <div class="content__category">
-                    <p class="content__label">
-                       Giỏ Tết
-                    </p>
-                </div>
-            </div>
-            <div class="grid wide">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card">
-                            <a href="" class="card-link">
-                                <div class="card-content" style="background-image: url(<?php echo BASE_URL ?>Public/Frontend/image/gq4.png) ;"> 
-                                    <div class="card-body">
-                                        <h3 class="card-name">
-                                            Giỏ trái cây 1 (Mẫu 1)
-                                        </h3>
-                                        <p class="card-price">
-                                            65,000$ <span> 68,000$</span>
-                                        </p>
-                                        <a href="" class="btn btn__card">
-                                            Thêm vào giỏ
-                                        </a>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                  
-                </div>
-            </div>
-            <div class="grid wide">
-                <div class="content__category">
-                    <p class="content__label">
-                       Tin Tức 
-                    </p>
-                </div>
-            </div>
-            <div class="grid wide">
-                <div class=" row content__news">
-                    <div class="col-lg-4 ">
-                        <div class="card ">
-                            <a href="" class="card-link">
-                                <div class="card-content content__news-card" style="background-image: url(<?php echo BASE_URL ?>Public/Frontend/image/bn1.jpg) ;"> 
-                                    <div class="content__news-body">
-                                        <h3 class="card__news-name">
-                                            Hướng dẫn việc tặng quà lễ, tết các đối tượng chính sách
-                                        </h3>
-                                        <p class="card__news-time">
-                                            <i class="far fa-calendar-alt"></i> 4/3/2021
-                                        </p>
-                                        <p class="card__news-description">
-                                            Sở Lao động - Thương binh và Xã hội Khánh Hòa vừa ban hành văn bản hướng dẫn tặng quà Tết Nguyên đán Tân Sửu 2021 cho người có công với cách mạng, đối tượng xã hội do sở quản lý.
-                                            Theo đó, về quà của Chủ tịch nước có 2 mức. Mức quà 600.000 đồng dành tặng các đối tượng: Người hoạt động cách mạng trước ngày 1-1-1945 đang hưởng trợ cấp ưu đãi hằng tháng; người hoạt động cách mạng từ ngày 1-1-1945 đến ngày khởi nghĩa Tháng Tám năm 1945 đang hưởng trợ cấp ưu đãi hằng tháng; Bà mẹ Việt Nam Anh hùng đang hưởng trợ cấp ưu đãi hằng tháng; Anh hùng Lực lượng vũ trang nhân dân, Anh hùng Lao động trong thời kỳ kháng chiến đang hưởng trợ cấp ưu đãi hằng tháng; thương binh, người hưởng chính sách như thương binh, thương binh loại B, bệnh binh suy giảm khả năng lao động từ 81% trở lên đang hưởng trợ cấp ưu đãi hằng tháng; 
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 ">
-                        <div class="card ">
-                            <a href="" class="card-link">
-                                <div class="card-content content__news-card" style="background-image: url(<?php echo BASE_URL ?>Public/Frontend/image/bn3.png) ;"> 
-                                    <div class="content__news-body">
-                                        <h3 class="card__news-name">
-                                            Hướng dẫn việc tặng quà lễ, tết các đối tượng chính sách
-                                        </h3>
-                                        <p class="card__news-time">
-                                            <i class="far fa-calendar-alt"></i> 4/3/2021
-                                        </p>
-                                        <p class="card__news-description">
-                                            Sở Lao động - Thương binh và Xã hội Khánh Hòa vừa ban hành văn bản hướng dẫn tặng quà Tết Nguyên đán Tân Sửu 2021 cho người có công với cách mạng, đối tượng xã hội do sở quản lý.
-                                            Theo đó, về quà của Chủ tịch nước có 2 mức. Mức quà 600.000 đồng dành tặng các đối tượng: Người hoạt động cách mạng trước ngày 1-1-1945 đang hưởng trợ cấp ưu đãi hằng tháng; người hoạt động cách mạng từ ngày 1-1-1945 đến ngày khởi nghĩa Tháng Tám năm 1945 đang hưởng trợ cấp ưu đãi hằng tháng; Bà mẹ Việt Nam Anh hùng đang hưởng trợ cấp ưu đãi hằng tháng; Anh hùng Lực lượng vũ trang nhân dân, Anh hùng Lao động trong thời kỳ kháng chiến đang hưởng trợ cấp ưu đãi hằng tháng; thương binh, người hưởng chính sách như thương binh, thương binh loại B, bệnh binh suy giảm khả năng lao động từ 81% trở lên đang hưởng trợ cấp ưu đãi hằng tháng; 
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 ">
-                        <div class="card ">
-                            <a href="" class="card-link">
-                                <div class="card-content content__news-card" style="background-image: url(<?php echo BASE_URL ?>Public/Frontend/image/bn2.jpg) ;"> 
-                                    <div class="content__news-body">
-                                        <h3 class="card__news-name">
-                                            Hướng dẫn việc tặng quà lễ, tết các đối tượng chính sách
-                                        </h3>
-                                        <p class="card__news-time">
-                                            <i class="far fa-calendar-alt"></i> 4/3/2021
-                                        </p>
-                                        <p class="card__news-description">
-                                            Sở Lao động - Thương binh và Xã hội Khánh Hòa vừa ban hành văn bản hướng dẫn tặng quà Tết Nguyên đán Tân Sửu 2021 cho người có công với cách mạng, đối tượng xã hội do sở quản lý.
-                                            Theo đó, về quà của Chủ tịch nước có 2 mức. Mức quà 600.000 đồng dành tặng các đối tượng: Người hoạt động cách mạng trước ngày 1-1-1945 đang hưởng trợ cấp ưu đãi hằng tháng; người hoạt động cách mạng từ ngày 1-1-1945 đến ngày khởi nghĩa Tháng Tám năm 1945 đang hưởng trợ cấp ưu đãi hằng tháng; Bà mẹ Việt Nam Anh hùng đang hưởng trợ cấp ưu đãi hằng tháng; Anh hùng Lực lượng vũ trang nhân dân, Anh hùng Lao động trong thời kỳ kháng chiến đang hưởng trợ cấp ưu đãi hằng tháng; thương binh, người hưởng chính sách như thương binh, thương binh loại B, bệnh binh suy giảm khả năng lao động từ 81% trở lên đang hưởng trợ cấp ưu đãi hằng tháng; 
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>    
-                </div>
-            </div>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Home | E-Shopper</title>
+    <link href="<?php echo BASE_URL ?>/Public/Frontend/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL ?>/Public/Frontend/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL ?>/Public/Frontend/css/prettyPhoto.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL ?>/Public/Frontend/css/price-range.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL ?>/Public/Frontend/css/animate.css" rel="stylesheet">
+	<link href="<?php echo BASE_URL ?>/Public/Frontend/css/main.css" rel="stylesheet">
+	<link href="<?php echo BASE_URL ?>/Public/Frontend/css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
 
-        </div>
-        <!-- End Content -->
-        <!-- Footer -->
-        <div id="footer">
-            <div class="grid wide">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="footer__contact">
-                            <h3 class="footer__head" style="text-align: left;"> CÔNG TY TNHH TM DV ĐẦU TƯ VẠN PHÚ</h3>
-                            <div class="footer__body">
-                                <label for="">Địa chỉ:
-                                    <a href="" class="footer__link-left">Weba.vn Đoàn Hải Plaza, Số 756 Trường Chinh, Tân Bình, Hồ Chí Minh</a>
-                                </label>
-                                <label for="">
-                                    Hotline:<a href="" class="footer__link-left">0366361624</a>
-                                </label>
-                                <label for="">E-mail: <a href="" class="footer__link-left">nvvan.19it4@vku.udn.vn</a></label>
-                            </div>
-                            <img src="<?php echo BASE_URL ?>Public/Frontend/image/logo (1).png" alt="" class="footer__link-img">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="footer__contact">
-                            <div class="row">
-                                <div class="col-4">
-                                    <h3 class="footer__head">  DANH SÁCH MENU </h3>
-                                    <ul class="footer__list">
-                                        <li class="footer__item"><a href="" class="footer__link-right">Trang chủ</a></li>
-                                        <li class="footer__item"><a href="" class="footer__link-right">Giỏ Hàng</a></li>
-                                        <li class="footer__item"><a href="" class="footer__link-right">Thanh Toán</a></li>
-                                        <li class="footer__item"><a href="" class="footer__link-right">Liên Hệ</a></li>
+<body>
+	<header id="header"><!--header-->
+		<div class="header_top"><!--header_top-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="contactinfo">
+							<ul class="nav nav-pills">
+								<li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="social-icons pull-right">
+							<ul class="nav navbar-nav">
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header_top-->
+		
+		<div class="header-middle"><!--header-middle-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="logo pull-left">
+							<a href="index.html"><img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/logo.png" alt="" /></a>
+						</div>
+						<div class="btn-group pull-right">
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+									USA
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">Canada</a></li>
+									<li><a href="#">UK</a></li>
+								</ul>
+							</div>
+							
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+									DOLLAR
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">Canadian Dollar</a></li>
+									<li><a href="#">Pound</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="shop-menu pull-right">
+							<ul class="nav navbar-nav">
+								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-middle-->
+	
+		<div class="header-bottom"><!--header-bottom-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-9">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="mainmenu pull-left">
+							<ul class="nav navbar-nav collapse navbar-collapse">
+								<li><a href="index.html" class="active">Home</a></li>
+								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="shop.html">Products</a></li>
+										<li><a href="product-details.html">Product Details</a></li> 
+										<li><a href="checkout.html">Checkout</a></li> 
+										<li><a href="cart.html">Cart</a></li> 
+										<li><a href="<?php echo BASE_URL ?>AdminController/ViewLoginAdmin">Admin</a></li> 
+										<li><a href="login.html">Login</a></li> 
                                     </ul>
-                                </div>
-                                <div class="col-4">
-                                    <h3 class="footer__head"> DANH MỤC SẢN PHẨM</h3>
-                                    <ul class="footer__list">
-                                        <li class="footer__item"><a href="" class="footer__link-right">Hộp quà tết</a></li>
-                                        <li class="footer__item"><a href="" class="footer__link-right">Giỏ quà tết</a></li>
-                                        <li class="footer__item"><a href="" class="footer__link-right">Sản phẩm bán chạy</a></li>
-                                        <li class="footer__item"><a href="" class="footer__link-right">Sản phẩm khác</a></li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="col-4">
-                                    <h3 class="footer__head"> HỖ TRỢ KHÁCH HÀNG</h3>
-                                    <ul class="footer__list">
-                                        <li class="footer__item"><a href="" class="footer__link-right">Hổ Trợ khách hàng</a></li>
-                                        <li class="footer__item"><a href="" class="footer__link-right">Điều khoản & dịch vụ</a></li>
-                                        <li class="footer__item"><a href="" class="footer__link-right">Hướng dẫn mua hàng</a></li>
-                                        <li class="footer__item"><a href="" class="footer__link-right">Hổ Trợ khách hàng</a></li>
-                                        <li class="footer__item"><a href="" class="footer__link-right">Điều khoản & dịch vụ</a></li>
-                                        <li class="footer__item"><a href="" class="footer__link-right">Hướng dẫn mua hàng</a></li>
+                                </li> 
+                                <li class="dropdown"><a href="#">Category<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <?php
+										 $load = new Load();
+										 $load->view($yield_category,$data);
+										?>
                                         
                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               
+                                </li> 
+								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="blog.html">Blog List</a></li>
+										<li><a href="blog-single.html">Blog Single</a></li>
+                                    </ul>
+                                </li> 
+								<li><a href="404.html">404</a></li>
+								<li><a href="contact-us.html">Contact</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="search_box pull-right">
+							<input type="text" placeholder="Search"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-bottom-->
+	</header><!--/header-->
+	
+	<section id="slider"><!--slider-->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+							<li data-target="#slider-carousel" data-slide-to="1"></li>
+							<li data-target="#slider-carousel" data-slide-to="2"></li>
+						</ol>
+						
+						<div class="carousel-inner">
+							<div class="item active">
+								<div class="col-sm-6">
+									<h1><span>E</span>-SHOPPER</h1>
+									<h2>Free E-Commerce Template</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+									<button type="button" class="btn btn-default get">Get it now</button>
+								</div>
+								<div class="col-sm-6">
+									<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/girl1.jpg" class="girl img-responsive" alt="" />
+									<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/pricing.png"  class="pricing" alt="" />
+								</div>
+							</div>
+							<div class="item">
+								<div class="col-sm-6">
+									<h1><span>E</span>-SHOPPER</h1>
+									<h2>100% Responsive Design</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+									<button type="button" class="btn btn-default get">Get it now</button>
+								</div>
+								<div class="col-sm-6">
+									<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/girl2.jpg" class="girl img-responsive" alt="" />
+									<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/pricing.png"  class="pricing" alt="" />
+								</div>
+							</div>
+							
+							<div class="item">
+								<div class="col-sm-6">
+									<h1><span>E</span>-SHOPPER</h1>
+									<h2>Free Ecommerce Template</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+									<button type="button" class="btn btn-default get">Get it now</button>
+								</div>
+								<div class="col-sm-6">
+									<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/girl3.jpg" class="girl img-responsive" alt="" />
+									<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/pricing.png" class="pricing" alt="" />
+								</div>
+							</div>
+							
+						</div>
+						
+						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+							<i class="fa fa-angle-left"></i>
+						</a>
+						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+							<i class="fa fa-angle-right"></i>
+						</a>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</section><!--/slider-->
+	
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+						
+					
+						<div class="brands_products"><!--brands_products-->
+							<h2>Brands</h2>
+							<div class="brands-name">
+								<ul class="nav nav-pills nav-stacked">
+									<li><a href="#"> <span class="pull-right">(50)</span>Acne</a></li>
+									<li><a href="#"> <span class="pull-right">(56)</span>Grüne Erde</a></li>
+									<li><a href="#"> <span class="pull-right">(27)</span>Albiro</a></li>
+									<li><a href="#"> <span class="pull-right">(32)</span>Ronhill</a></li>
+									<li><a href="#"> <span class="pull-right">(5)</span>Oddmolly</a></li>
+									<li><a href="#"> <span class="pull-right">(9)</span>Boudestijn</a></li>
+									<li><a href="#"> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
+								</ul>
+							</div>
+						</div><!--/brands_products-->
+						
+						<div class="price-range"><!--price-range-->
+							<h2>Price Range</h2>
+							<div class="well text-center">
+								 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+								 <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+							</div>
+						</div><!--/price-range-->
+						
+						<div class="shipping text-center"><!--shipping-->
+							<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/shipping.jpg" alt="" />
+						</div><!--/shipping-->
+					
+					</div>
+				</div>
+				
+				<div class="col-sm-9 padding-right">
+					<div class="features_items"><!--features_items-->
+						<h2 class="title text-center">Features Items</h2>
 
-            </div>
-            <div class="footer__and-footer">
-                <div class="grid wide">
-                    <div class="footer__info">               
-                        <div class="footer__license">
-                            &#169;  Copy all right <a href="" class="footer__link"> Công Ty TNHH Thương Mại Dịch Vụ Đầu Tư Vạn Phú</a>  2015 - 2019
-                        </div>
-                        <div class="footer__social">
-                            <a href="" class="footer__link"> <i class="fab fa-facebook-square  footer__icon"></i></a>
-                            <a href="" class="footer__link"> <i class="fab fa-google-plus-square footer__icon"></i></a>
-                            <a href="" class="footer__link"> <i class="fab fa-twitter-square footer__icon"></i></a>
-                            <a href="" class="footer__link"><i class="fab fa-youtube-square footer__icon"></i></a>
-                            <a href="" class="footer__link"> <i class="fab fa-linkedin footer__icon"></i></a>
-                        </div> 
-                    </div>
-                </div> 
-            </div>
-            
-        </div>
-        <!-- End Footer -->
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="<?php echo BASE_URL ?>Public/Frontend/Js/owl.carousel.js"></script>
-    <script src="<?php echo BASE_URL ?>Public/Frontend/Js/owl.carousel.min.js"></script>
-    <script>
-        $('.owl-carousel').owlCarousel({
-            autoplay:true,
-                autoplayTimeout:3000,
-                autoplayHoverPause:false,
-                loop:true,
-                items:1,
-                dots:false
+                        <?php 
+                           
+                            // echo '<pre>';
+                            // print_r($data);
+                            // echo '</pre>';
+                            $load->view($yield_product,$data);
+                        
+                        
+                        ?>
 
-        })
-    </script>
+
+						
+						
+						
+					</div><!--features_items-->
+					
+					<div class="category-tab"><!--category-tab-->
+						<div class="col-sm-12">
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#tshirt" data-toggle="tab">T-Shirt</a></li>
+								<li><a href="#blazers" data-toggle="tab">Blazers</a></li>
+								<li><a href="#sunglass" data-toggle="tab">Sunglass</a></li>
+								<li><a href="#kids" data-toggle="tab">Kids</a></li>
+								<li><a href="#poloshirt" data-toggle="tab">Polo shirt</a></li>
+							</ul>
+						</div>
+						<div class="tab-content">
+							<div class="tab-pane fade active in" id="tshirt" >
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/gallery1.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								
+							</div>
+							
+							<div class="tab-pane fade" id="blazers" >
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/gallery4.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							
+							</div>
+							
+							<div class="tab-pane fade" id="sunglass" >
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/gallery3.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								
+							</div>
+							
+							<div class="tab-pane fade" id="kids" >
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/gallery1.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								
+							</div>
+							
+							<div class="tab-pane fade" id="poloshirt" >
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/gallery2.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div><!--/category-tab-->
+					
+					<div class="recommended_items"><!--recommended_items-->
+						<h2 class="title text-center">recommended items</h2>
+						
+						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner">
+								<div class="item active">	
+									<div class="col-sm-4">
+										<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/recommend1.jpg" alt="" />
+													<h2>$56</h2>
+													<p>Easy Polo Black Edition</p>
+													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+									
+								</div>
+								<div class="item">	
+									<div class="col-sm-4">
+										<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/recommend1.jpg" alt="" />
+													<h2>$56</h2>
+													<p>Easy Polo Black Edition</p>
+													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+								
+								</div>
+							</div>
+							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+								<i class="fa fa-angle-left"></i>
+							  </a>
+							  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+								<i class="fa fa-angle-right"></i>
+							  </a>			
+						</div>
+					</div><!--/recommended_items-->
+					
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<footer id="footer"><!--Footer-->
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+						<div class="companyinfo">
+							<h2><span>e</span>-shopper</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
+						</div>
+					</div>
+					<div class="col-sm-7">
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/iframe1.png" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/iframe2.png" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/iframe3.png" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/iframe4.png" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="address">
+							<img src="<?php echo BASE_URL ?>/Public/Frontend/images/home/map.png" alt="" />
+							<p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer-widget">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Service</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Online Help</a></li>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Order Status</a></li>
+								<li><a href="#">Change Location</a></li>
+								<li><a href="#">FAQ’s</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Quock Shop</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">T-Shirt</a></li>
+								<li><a href="#">Mens</a></li>
+								<li><a href="#">Womens</a></li>
+								<li><a href="#">Gift Cards</a></li>
+								<li><a href="#">Shoes</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Policies</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Terms of Use</a></li>
+								<li><a href="#">Privecy Policy</a></li>
+								<li><a href="#">Refund Policy</a></li>
+								<li><a href="#">Billing System</a></li>
+								<li><a href="#">Ticket System</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>About Shopper</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Company Information</a></li>
+								<li><a href="#">Careers</a></li>
+								<li><a href="#">Store Location</a></li>
+								<li><a href="#">Affillate Program</a></li>
+								<li><a href="#">Copyright</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3 col-sm-offset-1">
+						<div class="single-widget">
+							<h2>About Shopper</h2>
+							<form action="#" class="searchform">
+								<input type="text" placeholder="Your email address" />
+								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+								<p>Get the most recent updates from <br />our site and be updated your self...</p>
+							</form>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+				</div>
+			</div>
+		</div>
+		
+	</footer><!--/Footer-->
+	
+
+  
+    <script src="<?php echo BASE_URL ?>/Public/Frontend/js/jquery.js"></script>
+	<script src="<?php echo BASE_URL ?>/Public/Frontend/js/bootstrap.min.js"></script>
+	<script src="<?php echo BASE_URL ?>/Public/Frontend/js/jquery.scrollUp.min.js"></script>
+	<script src="<?php echo BASE_URL ?>/Public/Frontend/js/price-range.js"></script>
+    <script src="<?php echo BASE_URL ?>/Public/Frontend/js/jquery.prettyPhoto.js"></script>
+    <script src="<?php echo BASE_URL ?>/Public/Frontend/js/main.js"></script>
 </body>
 </html>
+
