@@ -48,12 +48,12 @@
 				
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Features Items</h2>
+						<h2 class="title text-center">Product </h2>
 
                         <?php 
                            
                             // echo '<pre>';
-                            // print_r($data);
+                            // print_r($products);
                             // echo '</pre>';
                             $load->view($yield_product,$data);
                         
@@ -66,11 +66,22 @@
 						
 					</div><!--features_items-->
 					
+							<?php 
+							if(isset($pages))
+							{
+								echo '<ul class="pagination">';
+									for ($i=1; $i <= $pages; $i++) { 
+									
+										echo '<li class=""><a class="" href="'.BASE_URL.'/HomeController/getAllProduct/'.$i.'">'.$i.'</a></li>';
+									}
+									echo '<li><a href="">&raquo;</a></li>';
+								echo '</ul>	';
+							}
+							?>
+						
+							
 					
-					<?php   
-							$load->view($yield_tabs,$data);
-					  		$load->view($yield_slidebottom,$data);
-					?>
+					
 					
 					
 				</div>

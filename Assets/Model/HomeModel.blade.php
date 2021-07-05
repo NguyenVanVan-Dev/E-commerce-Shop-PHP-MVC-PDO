@@ -5,15 +5,23 @@ class HomeModel extends MasterModel {
      {
         parent::__construct();
      }
-     public function getCategoryHome($table,$status=0){
-      $sql =" SELECT * FROM $table WHERE category_status = $status";
+     public function getCategoryHome($table){
+      $sql =" SELECT * FROM $table WHERE category_status = 1";
       return $this->db->select($sql);
 
      }
-     public function getProductHome($table,$status=0){
-      $sql =" SELECT * FROM $table WHERE product_status = $status";
+     public function getProductHome($table){
+      $sql =" SELECT * FROM $table WHERE product_status = 1 ORDER BY product_id DESC LIMIT 6";
       return $this->db->select($sql);
 
+     }
+     public function getProductByCategoryId($table,$condition){
+      $sql =" SELECT * FROM $table WHERE product_status = 1 AND $condition ORDER BY product_id DESC ";
+      return $this->db->select($sql);
+     }
+     public function getAllproduct($table){
+      $sql =" SELECT * FROM $table WHERE product_status = 1   ORDER BY product_id DESC ";
+      return $this->db->select($sql);
      }
 }
 

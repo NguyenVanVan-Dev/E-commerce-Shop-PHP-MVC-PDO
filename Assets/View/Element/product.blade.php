@@ -9,13 +9,13 @@ if(isset($products)){
                         <div class="single-products">
                                 <div class="productinfo text-center">
                                     <img src="'.BASE_URL.''.$value['product_image'].'" alt="" />
-                                    <h2>'.$value['product_price'].'</h2>
+                                    <h2>'.number_format($value['product_price']).' Vnđ </h2>
                                     <p>'.$value['product_name'].'</p>
                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                                 <div class="product-overlay">
                                     <div class="overlay-content">
-                                        <h2>'.$value['product_price'].'</h2>
+                                        <h2>'.number_format($value['product_price']).' Vnđ</h2>
                                         <p>'.$value['product_name'].'</p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
@@ -33,12 +33,13 @@ if(isset($products)){
 
 
     }
+    
 
-
+}else if(empty($product))
+{
+    echo ' <h2> Không có sản phẩm nào  </h2>';
 }
 
 
 ?>
-
-
 
