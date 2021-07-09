@@ -28,90 +28,19 @@
 	
 	<?php 
 		$load = new Load;
-		$session = new Session;
 		$load->view($yield_header,$data);
-	
+      
 	?>
 	
-	<section id="advertisement">
-		<div class="container">
-			<img src="<?php echo BASE_URL ?>/Public/Frontend/images/shop/advertisement.jpg" alt="" />
-		</div>
-	</section>
+ 
+
+    <?php
+    
+        $load->view($yield_user,$data);
+    
+    ?>
 	
-	<section>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-3">
-					<div class="left-sidebar">
-						
-					<?php $load->view($yield_sidebar,$data);?>
-					
-					</div>
-				</div>
-				
-				<div class="col-sm-9 padding-right">
-					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Product </h2>
-						
-						<?php 
-                           
-						   if(!empty($number_product))
-					   		{
-								echo '<h4 class="text-center text-success">';
-								echo "Tìm Thấy ".$number_product." Sản Phẩm Có Giá Trị = ".$session->get('name_search');
-								echo '</h4>';
-							}
-							
-					   ?>
-						
-						
-                        <?php 
-                           
-                            // echo '<pre>';
-                            // print_r($products);
-                            // echo '</pre>';
-                            $load->view($yield_product,$data);
-                        
-                        
-                        ?>
-
-
-						
-						
-						
-					</div><!--features_items-->
-					
-							<?php 
-							
-							if(isset($pages))
-							{
-								echo '<ul class="pagination">';
-								
-									echo '<li><a href="'.BASE_URL.'/HomeController/getAllProduct/'.($pages-1).'">Previous</a></li>';
-								
-								
-									for ($i=1; $i <= $pages; $i++) { 
-									
-										echo '<li class=""><a class="" href="'.BASE_URL.'/HomeController/getAllProduct/'.$i.'">'.$i.'</a></li>';
-									}
-
-							
-									echo '<li><a href="'.BASE_URL.'/HomeController/getAllProduct/'.($i+1).'">Next</a></li>';
-								
-								echo '</ul>	';
-							}
-							?>
-						
-							
-					
-					
-					
-					
-				</div>
-			</div>
-		</div>
-	</section>
+	
 	
 	<?php   
 		

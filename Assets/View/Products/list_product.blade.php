@@ -79,7 +79,7 @@
                                 echo '<td>'; 
                                     echo '<a href="'.BASE_URL.'ProductsController/EditProduct/'.$value['product_id'].'" class="btn btn-success" > '.'<i class='.'"fas fa-edit"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
                                     echo '<a href="'.BASE_URL.'ProductsController/DeleteProduct/'.$value['product_id'].'" class="btn btn-danger ml-2" ui-toggle-class="" onclick="return confirm('.'\'Bạn có chắc là muốn xóa danh mục này ko?\''.')"  > '.'<i class='.'"fas fa-trash"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
-                                    echo '<a href="'.BASE_URL.'ProductsController/DetailProduct/'.$value['product_id'].'" class="btn btn-danger ml-2" ui-toggle-class="" > '.'<i class='.'"fas fa-book-open"'.' style='.'"font-size:20px"'.'></i>'.'</a>';  
+                                    echo '<a href="'.BASE_URL.'ProductsController/DetailProduct/'.$value['product_id'].'" class="btn btn-info ml-2" ui-toggle-class="" > '.'<i class='.'"fas fa-book-open"'.' style='.'"font-size:20px"'.'></i>'.'</a>';  
                                 echo '</td>';
                                 }
                                 else
@@ -87,7 +87,7 @@
                                 echo '<td>'; 
                                     echo '<a href="'.BASE_URL.'ProductsController/EditProduct/'.$value['product_id'].'" class="btn btn-success disabled " > '.'<i class='.'"fas fa-edit"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
                                     echo '<a href="'.BASE_URL.'ProductsController/DeleteProduct/'.$value['product_id'].'" class="btn btn-danger ml-2 disabled" ui-toggle-class="" onclick="return confirm('.'\'Bạn có chắc là muốn xóa danh mục này ko?\''.')"  > '.'<i class='.'"fas fa-trash"'.' style='.'"font-size:20px"'.'></i>'.'</a>';
-                                    echo '<a href="'.BASE_URL.'ProductsController/DetailProduct/'.$value['product_id'].'" class="btn btn-danger ml-2" ui-toggle-class="" > '.'<i class='.'"fas fa-book-open"'.' style='.'"font-size:20px"'.'></i>'.'</a>';  
+                                    echo '<a href="'.BASE_URL.'ProductsController/DetailProduct/'.$value['product_id'].'" class="btn btn-info ml-2" ui-toggle-class="" > '.'<i class='.'"fas fa-book-open"'.' style='.'"font-size:20px"'.'></i>'.'</a>';  
                                 echo '</td>';
 
                                 }

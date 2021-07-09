@@ -25,93 +25,54 @@
 </head><!--/head-->
 
 <body>
-	
-	<?php 
+    <?php 
 		$load = new Load;
-		$session = new Session;
 		$load->view($yield_header,$data);
-	
+		$load->view($yield_slide,$data);
+		
 	?>
-	
-	<section id="advertisement">
-		<div class="container">
-			<img src="<?php echo BASE_URL ?>/Public/Frontend/images/shop/advertisement.jpg" alt="" />
-		</div>
-	</section>
-	
-	<section>
+	<section id="form"><!--form-->
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
-					<div class="left-sidebar">
-						
-					<?php $load->view($yield_sidebar,$data);?>
-					
-					</div>
+				<div class="col-sm-4 col-sm-offset-1">
+					<div class="login-form"><!--login form-->
+						<h2>Login to your account</h2>
+						<form action="<?php echo BASE_URL ?>UsersController/LoginUser" method="post">
+							<input type="email" name="email_user" placeholder="Email Address" />
+							<input type="password" name="password_user" placeholder="PassWord" />
+							<span>
+								<input type="checkbox" class="checkbox"> 
+								Keep me signed in
+							</span>
+							<button type="submit" class="btn btn-default">Login</button>
+						</form>
+					</div><!--/login form-->
 				</div>
-				
-				<div class="col-sm-9 padding-right">
-					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Product </h2>
-						
-						<?php 
-                           
-						   if(!empty($number_product))
-					   		{
-								echo '<h4 class="text-center text-success">';
-								echo "Tìm Thấy ".$number_product." Sản Phẩm Có Giá Trị = ".$session->get('name_search');
-								echo '</h4>';
-							}
-							
-					   ?>
-						
-						
-                        <?php 
-                           
-                            // echo '<pre>';
-                            // print_r($products);
-                            // echo '</pre>';
-                            $load->view($yield_product,$data);
-                        
-                        
-                        ?>
-
-
-						
-						
-						
-					</div><!--features_items-->
-					
-							<?php 
-							
-							if(isset($pages))
-							{
-								echo '<ul class="pagination">';
-								
-									echo '<li><a href="'.BASE_URL.'/HomeController/getAllProduct/'.($pages-1).'">Previous</a></li>';
-								
-								
-									for ($i=1; $i <= $pages; $i++) { 
-									
-										echo '<li class=""><a class="" href="'.BASE_URL.'/HomeController/getAllProduct/'.$i.'">'.$i.'</a></li>';
-									}
-
-							
-									echo '<li><a href="'.BASE_URL.'/HomeController/getAllProduct/'.($i+1).'">Next</a></li>';
-								
-								echo '</ul>	';
-							}
-							?>
-						
-							
-					
-					
-					
-					
+				<div class="col-sm-1">
+					<h2 class="or">OR</h2>
+				</div>
+				<div class="col-sm-4">
+					<div class="signup-form"><!--sign up form-->
+						<h2>New User Signup!</h2>
+						<form action="<?php echo BASE_URL ?>UsersController/RegisterUser" method="post">
+							<input type="text" name="name_user" placeholder="Name"/>
+							<input type="email" name="email_user" placeholder="Email Address"/>
+							<input type="password" name="password_user" placeholder="Password"/>
+							<?php									
+									date_default_timezone_set('Asia/Ho_Chi_Minh');
+									$date  = new DateTime(); 
+									$time_created = $date->format('d-m-Y H:i:s');
+								?>
+							<label for="meeting-time">Time Create User:</label>
+							<input type="text" id="meeting-time"
+									name="time_create" value="<?php echo $time_created; ?>" >
+							<button type="submit" class="btn btn-default">Signup</button>
+						</form>
+					</div><!--/sign up form-->
 				</div>
 			</div>
 		</div>
-	</section>
+	</section><!--/form-->
 	
 	<?php   
 		
@@ -129,4 +90,3 @@
     <script src="<?php echo BASE_URL ?>/Public/Frontend/js/main.js"></script>
 </body>
 </html>
-

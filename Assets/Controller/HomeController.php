@@ -6,7 +6,7 @@
         const TABLE_BRAND = 'tbl_categorys';
         public function __construct()
         {
-           
+            Session::init();
             parent::__construct();
             // $this->load = new Load();
         }
@@ -47,7 +47,7 @@
             $HomeModel = $this->load->model('HomeModel');
             $ProductModel = $this->load->model('ProductModel');
             
-            $number_row = 6; // sô bản ghi trên 1 trang 
+            $number_row = 12; // sô bản ghi trên 1 trang 
             $number_page = ($page -1) * $number_row; // số limit vi dụ url =?page =1 => $number_page = (1 -1 )* 10 
             // LIMIT $number_page,$number_row = LIMIT 0,10
             
@@ -69,7 +69,60 @@
             $this->load->view('home',$data);
 
         }
-        
+        public function DetailsProduct($id){
+            $HomeModel = $this->load->model('HomeModel');
+            $ProductModel = $this->load->model('ProductModel');
+            $data['yield_header'] = 'Element/header';
+            //product connection
+           
+
+            $product = $ProductModel->ProductById(self::TABLE_PRODUCT,$id);
+            foreach($product as $key => $value){
+                $category_product = $value['category_id'];
+            }
+            $condition = "category_id = $category_product";
+            $data['product_connect'] =  $HomeModel->getProductConnect(self::TABLE_PRODUCT,$condition);
+         
+            $data['products'] = $ProductModel->ProductById(self::TABLE_PRODUCT,$id);
+            $data['category']=$HomeModel->getCategoryHome(self::TABLE_CATE);
+            // comment
+
+
+            $data['yield_sidebar'] = 'Element/sidebar';
+            $data['yield_bottom'] = 'Element/slidebottom';
+            $data['yield_footer'] = 'Element/footer';
+          
+            $this->load->view('layout_product_details',$data);
+        }
+        public function SearchProduct(){
+            $HomeModel = $this->load->model('HomeModel');
+            $search = filter_input(INPUT_POST,'search');
+            if(!empty($search) && isset($search))
+            {
+                $data['category']=$HomeModel->getCategoryHome(self::TABLE_CATE);
+                $data['products'] = $HomeModel->SearchProduct(self::TABLE_PRODUCT,$search);
+                if(!empty($data['products']))
+                {
+                    $data['number_product'] = count($data['products']);
+                }
+                else
+                {
+                    $data['number_product'] = null;
+                }
+                $data['yield_product'] = 'Element/product';
+                $data['yield_footer'] = 'Element/footer';
+                $data['yield_header'] = 'Element/header';
+                $data['yield_sidebar'] = 'Element/sidebar';
+                $data['yield_slide'] = 'Element/slide';
+                Session::set('name_search',$search);
+                $this->load->view('home',$data);
+            }
+            else
+            {
+                header("location:".BASE_URL.'');
+            }
+          
+        }
     }
 
 ?>
