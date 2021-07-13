@@ -45,20 +45,19 @@
         }
         public function getAllProduct($page){
             $HomeModel = $this->load->model('HomeModel');
-            $ProductModel = $this->load->model('ProductModel');
             
-            $number_row = 12; // sô bản ghi trên 1 trang 
+            $number_row = 9; // sô bản ghi trên 1 trang 
             $number_page = ($page -1) * $number_row; // số limit vi dụ url =?page =1 => $number_page = (1 -1 )* 10 
             // LIMIT $number_page,$number_row = LIMIT 0,10
             
-            $count = $ProductModel->getListProduct(self::TABLE_PRODUCT);
+            $count = $HomeModel->getAllProduct(self::TABLE_PRODUCT);
             $count = count($count);
             $pages = ceil($count / $number_row) ;
             
             //tính số trang được phân ra vd: có 40 bảng ghi sẽ phân làm 4 trang 
             $data['pages'] = $pages;
             $data['category']=$HomeModel->getCategoryHome(self::TABLE_CATE);
-            $data['products'] = $ProductModel->getProductPanigation(self::TABLE_PRODUCT,$number_page,$number_row);
+            $data['products'] = $HomeModel->getProductPanigation(self::TABLE_PRODUCT,$number_page,$number_row);
             $data['yield_product'] = 'Element/product';
             $data['yield_footer'] = 'Element/footer';
             $data['yield_header'] = 'Element/header';
@@ -110,8 +109,8 @@
                     $data['number_product'] = null;
                 }
                 $data['yield_product'] = 'Element/product';
-                $data['yield_footer'] = 'Element/footer';
                 $data['yield_header'] = 'Element/header';
+                $data['yield_footer'] = 'Element/footer';
                 $data['yield_sidebar'] = 'Element/sidebar';
                 $data['yield_slide'] = 'Element/slide';
                 Session::set('name_search',$search);

@@ -69,7 +69,10 @@
       $image = $_FILES['product_image']['name'];// lấy tên file 
       $tmp_image = $_FILES['product_image']['tmp_name']; //lấy đường ẫn cũ của file
       $price =filter_input(INPUT_POST,'product_price');
-      $time_created =filter_input(INPUT_POST,'product_time_created');
+
+      date_default_timezone_set('Asia/Ho_Chi_Minh');
+      $date  = new DateTime(); 
+      $time_created = $date->format('d-m-Y H:i:s');
       
       $divede_name_image = explode('.',$image); //tach ten file cũ ra khỏi loại fie vd :haha.png => $divede_name_image = ['haha','png']
       $file_type = strtolower(end($divede_name_image));// đổi tất cả các chứ của đuôi file thàng chữ thường  
@@ -141,7 +144,10 @@
       $image = $_FILES['product_image']['name'];// lấy tên file 
       $tmp_image = $_FILES['product_image']['tmp_name']; //lấy đường ẫn cũ của file
       $price =filter_input(INPUT_POST,'product_price');
-      $time_created =filter_input(INPUT_POST,'product_time_created');
+
+      date_default_timezone_set('Asia/Ho_Chi_Minh');
+      $date  = new DateTime(); 
+      $time_created = $date->format('d-m-Y H:i:s');
       
       $divede_name_image = explode('.',$image); //tach ten file cũ ra khỏi loại fie vd :haha.png => $divede_name_image = ['haha','png']
       $file_type = strtolower(end($divede_name_image));// đổi tất cả các chứ của đuôi file thàng chữ thường  

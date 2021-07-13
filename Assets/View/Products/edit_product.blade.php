@@ -104,19 +104,7 @@
                                                 
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <?php
-                                        
-                                        date_default_timezone_set('Asia/Ho_Chi_Minh');
-                                        $date   = new DateTime(); //this returns the current date time
-                                        $time_created = $date->format('d-m-Y H:i:s');
-
-
-                                        ?>
-                                        <label for="meeting-time">Time Created Product:</label>
-                                        <input type="text" id="meeting-time"
-                                            name="product_time_created" value="<?php echo $time_created; ?>"  class="form-control">
-                                    </div>
+                                    
                                     
                                     
                                 </div>

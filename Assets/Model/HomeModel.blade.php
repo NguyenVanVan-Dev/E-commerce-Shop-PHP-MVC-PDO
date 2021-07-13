@@ -17,16 +17,25 @@ class HomeModel extends MasterModel {
       return $this->db->select($sql);
 
      }
+     
      public function getProductByCategoryId($table,$condition)
      {
       $sql =" SELECT * FROM $table WHERE product_status = 1 AND $condition ORDER BY product_id DESC ";
       return $this->db->select($sql);
      }
-     public function getAllproduct($table)
+
+     public function getAllProduct($table)
      {
       $sql =" SELECT * FROM $table WHERE product_status = 1   ORDER BY product_id DESC ";
       return $this->db->select($sql);
      }
+
+     public function getProductPanigation($table,$number_page,$number_row)
+     {
+         $sql =" SELECT * FROM  $table WHERE product_status = 1 LIMIT $number_page,$number_row";
+         return $this->db->select($sql);
+     }
+
      public function getProductConnect($table,$condition)
      {
       $sql =" SELECT * FROM $table WHERE $condition ORDER BY product_id DESC LIMIT 3 ";

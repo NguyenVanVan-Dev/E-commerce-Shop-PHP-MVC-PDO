@@ -61,13 +61,14 @@
 							<ul class="nav navbar-nav">
 								
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="<?php echo BASE_URL ?>CartsController/ViewCheckOut"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="<?php echo BASE_URL ?>CartsController/ViewCart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								
 								<?php 
                                   
-                                  $session = new Session;
-                                  $name = $session::get('user_name');
+                                 
+                                  $name = Session::get('user_name');
+								  $name_id = Session::get('user_id');
                                   if(!empty($name))
 								  {
 									
@@ -186,7 +187,7 @@
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
-							<form action="<?php echo BASE_URL?>/HomeController/SearchProduct" method="post">
+							<form action="<?php echo BASE_URL?>HomeController/SearchProduct" method="post">
 								<input type="text" name="search" placeholder="Search"/>
 								<button type="submit" class="btn"><img src="<?php echo BASE_URL?>/Public/Frontend/images/home/searchicon.png" alt="" ></button>
 							</form>

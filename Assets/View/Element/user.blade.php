@@ -2,7 +2,11 @@
 	
 		$session = new Session;
 		$name = $session::get('user_name');
-		$name_id = $session::get('user_id');
+		$user_id = $session::get('user_id');
+		$user_email = $session::get('user_email') ? $user_email = $session::get('user_email') : $user_email = null ;
+		$user_avatar = $session::get('user_avatar') ? $user_avatar = $session::get('user_avatar')  : $user_avatar = null ;
+		$user_phone = $session::get('user_phone') ? $user_phone = $session::get('user_phone'): $user_phone = null ;
+		$user_address = $session::get('user_address') ? $user_address =  $session::get('user_address'): $user_address = null ;
 	
 	
 	?>
@@ -21,32 +25,42 @@
 			<div class="register-req">
 				<p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
 			</div><!--/register-req-->
-
+				<?php  
+					$isFalse= Session::get('isFalse');
+					$isSuccess= Session::get('isSuccess');
+					if($isFalse){
+						echo '  <div class="alert alert-danger">
+								<center>      <strong>Failed!</strong> '. $isFalse.'</center>
+								</div>';
+						Session::set('isFalse',null);
+					}
+					if($isSuccess){
+						echo '  <div class="alert alert-success">
+								<center>      <strong>SuccessFully!</strong> '. $isSuccess.'</center>
+								</div>';
+						Session::set('isSuccess',null);
+					}
+				?>	
 			<div class="shopper-informations">
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="shopper-info">
 							<p>Update Information</p>
-							<form id="formUser">
-								<input type="email" name="email" placeholder="Address Email">
-								<input type="text" name="name" placeholder="User Name">
+							<form id="formUser" enctype="multipart/form-data" action="<?php echo BASE_URL?>/UsersController/UpdateUser/<?php echo $user_id ?>" method="POST">
+								<input type="email" name="email" placeholder="Address Email" value="<?php echo $user_email ?>">
+								<input type="text" name="name" placeholder="User Name" value="<?php echo $name ?>">
 								<input type="password" name="pass" placeholder="Password">
-								
-								<input type="password" name="repeact_pass" placeholder="Confirm password">
-								<input type="file" name="image" id="" placeholder="Avatar">
-								<input type="text" name="address" placeholder="Address">		
-								<?php									
-									date_default_timezone_set('Asia/Ho_Chi_Minh');
-									$date  = new DateTime(); 
-									$time_created = $date->format('d-m-Y H:i:s');
-								?>
-								<label for="meeting-time">Time Update User:</label>
-								<input type="text" id="meeting-time"
-										name="time_updated" value="<?php echo $time_created; ?>" >
-								
+
+								<input type="password" name="repeat_pass" placeholder="Confirm password">
+								<input type="file" name="avatar" id="" placeholder="Avatar">
+								<input type="text" name="address" placeholder="Address" value="<?php echo $user_address ?>">		
+								<input type="text" name="phone" placeholder="Phone Number" value="<?php echo $user_phone ?>">		
+
+
+								<button type="submit" class="btn btn-primary"> Update Information </button>
+								<button onclick="resetForm()" class="btn btn-primary"> Reset Form </button>
 							</form>
-							<button type="submit" class="btn btn-primary"> Update Information </button>
-							<button onclick="resetForm()" class="btn btn-primary"> Reset Form </button>
+							
 							<script>
 								function resetForm(){
 									document.getElementById("formUser").reset();
@@ -61,7 +75,7 @@
 							<p><?php 
 							   echo 'Hello@'.$name.'...';
 							?></p>
-							<img src="<?php echo BASE_URL ?>Public/Frontend/images/home/girl1.jpg" alt="" style="width: 400px; height:400px">
+							<img src="<?php echo BASE_URL.$user_avatar ?>" alt="" style="width: 400px; height:400px">
 							
 						</div>	
 					</div>					
